@@ -12,14 +12,12 @@ class Interceptors {
     this.init()
   }
   init() {
-    const _this = this
     /**请求拦截器 */
     this.instance.interceptors.request.use(
       config => {
-        console.log(this)
         if (
-          _this.globalRequestConfig.headers &&
-          isPlainObject(_this.globalRequestConfig.headers)
+          this.globalRequestConfig.headers &&
+          isPlainObject(this.globalRequestConfig.headers)
         ) {
           const customHeaders = this.globalRequestConfig.headers || {}
           config.headers = Object.assign(config.headers, customHeaders)
@@ -32,6 +30,7 @@ class Interceptors {
             }
           })
         }
+        return config
       },
       error => {
         return Promise.reject(error)
@@ -40,7 +39,7 @@ class Interceptors {
 
     /**响应拦截器 */
     this.instance.interceptors.response.use((res: AxiosResponse) => {
-			// TODO
+      // TODO
       // if (
       //   _this.globalResponseConfig &&
       //   isPlainObject(_this.globalResponseConfig)
