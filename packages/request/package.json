@@ -13,6 +13,7 @@
   "files": [
     "lib"
   ],
+  "types": "./dist/index.d.ts",
   "publishConfig": {
     "registry": "http://registry.npmjs.org"
   },

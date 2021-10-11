@@ -1,10 +1,10 @@
 import { AxiosInstance, AxiosResponse } from 'axios'
-import { IRequestConfig } from '../typing'
+import { IRequestConfig } from '../types'
 import { isPlainObject } from '../utils'
 
 class Interceptors {
-  private instance: AxiosInstance
-  private globalRequestConfig: IRequestConfig
+  instance: AxiosInstance
+  globalRequestConfig: IRequestConfig
 
   constructor(config, instance: AxiosInstance) {
     this.instance = instance
