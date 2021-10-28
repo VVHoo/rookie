@@ -10,7 +10,7 @@ class Request {
 
   interceptor: RequestInterceptors
 
-  constructor(config) {
+  constructor(config: IRequestConfig) {
     this.config = config
     const { timeout, withCredentials } = this.config
     const instance = axios.create({
@@ -25,8 +25,9 @@ class Request {
    * get请求
    * @param url 接口地址
    * @param params 请求参数
+   * @param customConfig 自定义配置
    */
-  get(url, params, customConfig) {
+  get(url: string, params?: any | undefined, customConfig?: any | undefined) {
     customConfig = customConfig || {}
     customConfig.params = params || customConfig.params || {}
     return this.instance.get(url, customConfig)
@@ -36,10 +37,22 @@ class Request {
    * post请求
    * @param url 接口地址
    * @param data 请求参数
+   * @param customConfig 自定义配置
    */
-  post(url, data, customConfig) {
+  post(url: string, data?: any | undefined, customConfig?: any | undefined) {
     customConfig = customConfig || {}
     return this.instance.post(url, data, customConfig)
+  }
+
+  /**
+   * put请求
+   * @param url 接口地址
+   * @param data 请求参数
+   * @param customConfig 自定义配置
+   */
+  put(url: string, data?: any | undefined, customConfig?: any | undefined) {
+    customConfig = customConfig || {}
+    return this.instance.put(url, data, customConfig)
   }
 }
 
